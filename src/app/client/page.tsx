@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "../layout-page/Layout";
 import CardPokemon from "../Components/Card";
 import { CircularProgress, Pagination } from "@mui/material";
+import Waiter from "../Components/Waiter";
 
 interface Pokemon {
   name: string;
@@ -42,27 +43,12 @@ const PokeListComponent: React.FC = () => {
   }, [initialPage]);
   const changePage = (event: React.ChangeEvent<unknown>, value: number) => {
     setInitialePage(value);
+    setIsLoading(true);
   };
   return (
     <div style={{ overflow: "hidden" }}>
       <Layout>
-        {isLoading && (
-          <div
-            style={{
-              height: "70vh",
-              width: "100%",
-              position: "fixed",
-              zIndex: 9999,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              backdropFilter: "blur(1px)",
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
-            }}
-          >
-            <CircularProgress style={{ color: "yellow" }} />
-          </div>
-        )}
+        {isLoading && <Waiter />}
         <div
           style={{
             // border: "red solid 2px",
@@ -73,8 +59,14 @@ const PokeListComponent: React.FC = () => {
             borderBottom: "white solid 3px",
           }}
         >
-          <h1 style={{ textAlign: "center", fontSize: "7vh" }}>
-            List of Pokemon
+          <h1
+            style={{
+              textAlign: "center",
+              fontSize: "7vh",
+              fontFamily: "monospace",
+            }}
+          >
+            Tout les Pokemon
           </h1>
 
           {error && <p>Error: {error}</p>}
@@ -83,7 +75,7 @@ const PokeListComponent: React.FC = () => {
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-                gap: "20px",
+                gap: "50px",
               }}
             >
               {pokemonList.map((pokemon) => (

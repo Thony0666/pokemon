@@ -1,5 +1,8 @@
 import React from "react";
-
+import logo from "../../assets/images/pokemon.png";
+import logoRight from "../../assets/images/pokemonRight.png";
+import letter from "../../assets/images/pokemonHeader.png";
+import Image from "next/image";
 function Footer() {
   return (
     <>
@@ -12,9 +15,23 @@ function Footer() {
           backgroundColor: "black",
         }}
       >
-        <h1 style={{ fontSize: "5vh", textAlign: "center", color: "white" }}>
-          Footer
-        </h1>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ marginLeft: 10 }}>
+            <Image src={logo} alt="" width={100} />
+          </div>
+          <div>
+            <Image src={letter} alt="" width={100} />
+          </div>
+          <div style={{ marginLeft: 10 }}>
+            <Image src={logoRight} alt="" width={100} />
+          </div>
+        </div>
       </div>
     </>
   );

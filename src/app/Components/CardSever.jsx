@@ -2,9 +2,9 @@ import React from "react";
 import imgDesc3 from "../../assets/images/toys-5353951_1920.jpg";
 import Image from "next/image";
 import Link from "next/link";
-import ImageCard from "../Components/ImageCard";
+import ImageCard from "./ImageCard";
 
-function CardPokemon(props) {
+function CardPokemonServer(props) {
   const name = props.name;
   //   const idUser = parseInt(props.idPokemon.split("/").pop());
   const idUser = props.idPokemon.split("/").filter(Boolean).pop();
@@ -54,7 +54,7 @@ function CardPokemon(props) {
             </h1>
           </div>
           <div>
-            <Link href={`client/${idUser}`}>
+            <Link href={`server/${idUser}`}>
               <button
                 style={{
                   padding: "2px 6px",
@@ -78,4 +78,4 @@ function CardPokemon(props) {
   );
 }
 
-export default CardPokemon;
+export default CardPokemonServer;
