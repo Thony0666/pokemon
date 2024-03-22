@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState, useEffect } from 'react';
 
 interface Pokemon {
@@ -9,14 +7,9 @@ interface Pokemon {
 
 const PokeListComponent: React.FC = () => {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true);
-      setError(null);
-
       try {
         const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=50&offset=1');
         if (!response.ok) {
@@ -26,9 +19,6 @@ const PokeListComponent: React.FC = () => {
         setPokemonList(data.results);
       } catch (error) {
         console.error('Error fetching data:', error);
-        // setError(error.message);
-      } finally {
-        setIsLoading(false);
       }
     };
 
@@ -43,15 +33,11 @@ const PokeListComponent: React.FC = () => {
   return (
     <div>
       <h1>List of Pokemon</h1>
-      {isLoading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
-      {pokemonList.length > 0 && (
-        <ul>
-          {pokemonList.map((pokemon) => (
-            <li key={pokemon.name}>{pokemon.name} : {pokemon.url}</li>
-          ))}
-        </ul>
-      )}
+      <ul>
+        {pokemonList.map((pokemon, index) => (
+          <li key={index}>{pokemon.name}</li>
+        ))}
+      </ul>
     </div>
   );
 };
