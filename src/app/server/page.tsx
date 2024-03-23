@@ -80,7 +80,10 @@ const PokeListComponent: React.FC = () => {
             >
               {pokemonList.map((pokemon) => (
                 <div key={pokemon.name}>
-                  <CardPokemonServer name={pokemon.name} idPokemon={pokemon.url} />
+                  <CardPokemonServer
+                    name={pokemon.name}
+                    idPokemon={pokemon.url}
+                  />
                 </div>
               ))}
             </ul>

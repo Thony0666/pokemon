@@ -17,7 +17,7 @@ function ImageCard(props) {
         setLoad(false);
       } catch (error) {
         console.error("Error fetching Pokemon:", error);
-        setLoad(false);
+        // setLoad(false);
       }
     }
 
@@ -52,7 +52,11 @@ function ImageCard(props) {
     return (
       <div>
         {pokemon && pokemon.sprites && (
-          <img src={pokemon.sprites.front_default} alt="" />
+          <img
+            src={pokemon.sprites.other.showdown.front_default}
+            alt=""
+            style={{ minHeight: "60px", maxHeight: "60px" }}
+          />
         )}
       </div>
     );

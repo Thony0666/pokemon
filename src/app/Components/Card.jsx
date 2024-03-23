@@ -1,6 +1,4 @@
 import React from "react";
-import imgDesc3 from "../../assets/images/toys-5353951_1920.jpg";
-import Image from "next/image";
 import Link from "next/link";
 import ImageCard from "../Components/ImageCard";
 

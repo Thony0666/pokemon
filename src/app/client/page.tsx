@@ -43,11 +43,12 @@ const PokeListComponent: React.FC = () => {
   }, [initialPage]);
   const changePage = (event: React.ChangeEvent<unknown>, value: number) => {
     setInitialePage(value);
-    setIsLoading(true);
+    setIsLoading(true)
   };
   return (
     <div style={{ overflow: "hidden" }}>
       <Layout>
+        
         {isLoading && <Waiter />}
         <div
           style={{
